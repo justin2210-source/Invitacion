@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    height:100vh;
+    background:#111;
+    font-family:Arial, sans-serif;
+    color:white;
+}
+
+h2{
+    margin-bottom:40px;
+    animation:parpadeo 1.5s infinite;
+}
+
+.heart{
+    position:relative;
+    width:120px;
+    height:120px;
+    background:#ff0033;
+    transform:rotate(-45deg);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#ff0033;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-60px;
+    left:0;
+}
+
+.heart::after{
+    left:60px;
+    top:0;
+}
+
+.beat{
+    animation:latido .7s infinite;
+}
+
+@keyframes latido{
+    0%{transform:rotate(-45deg) scale(1);}
+    25%{transform:rotate(-45deg) scale(1.15);}
+    50%{transform:rotate(-45deg) scale(1);}
+    75%{transform:rotate(-45deg) scale(1.15);}
+    100%{transform:rotate(-45deg) scale(1);}
+}
+
+@keyframes parpadeo{
+    50%{opacity:.4;}
+}
+
+#mensaje{
+    margin-top:40px;
+    font-size:32px;
+    color:#ff4d6d;
+    font-weight:bold;
+    opacity:0;
+    transition:opacity .8s;
+}
+
+.mostrar{
+    opacity:1 !important;
+}
+</style>
+</head>
+<body>
+
+<h2 id="texto">❤️ Tócame ❤️</h2>
+
+<div class="heart" id="corazon"></div>
+
+<div id="mensaje">💖 Para ti 💖</div>
+
+<script>
+const corazon = document.getElementById("corazon");
+const mensaje = document.getElementById("mensaje");
+const texto = document.getElementById("texto");
+
+corazon.addEventListener("click", () => {
+    corazon.classList.add("beat");
+    texto.style.display = "none";
+    mensaje.classList.add("mostrar");
+});
+</script>
+
+</body>
+</html>
